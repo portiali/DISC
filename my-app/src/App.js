@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './NavBar.js';
+import Gallery from './Gallery.js';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <NavBar/>
+      <Gallery/>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -15,9 +19,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn R
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
