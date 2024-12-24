@@ -14,8 +14,8 @@ function NavBar() {
                 <li><a>Home</a></li>
                 <li><a>Create</a></li>
                 <li><a>Leaderboard</a></li>
-                <li>  <p>Count: {count}</p></li>
-                <li><button onClick={addCount}>Increment</button></li>
+                {/* <li>  <p>Count: {count}</p></li>
+                <li><button onClick={addCount}>Increment</button></li> */}
             </ul>
 
         </nav>

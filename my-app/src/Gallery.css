@@ -1,18 +1,35 @@
-
-.post-container{
+.post-container {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-  }
-  
-  .post img{
+}
+
+.post img {
     width: 300px;
     height: 250px;
     object-fit: cover;
     margin: 0;
-  }
-  .post p{
+    border-radius: 10%;
+}
+
+.img-title {
     margin-top: 30px;
     color: black;
-  }
+}
+
+.fas-fa-heart {
+    font-size: 3em;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.heart-iconliked {
+    color: pink;
+    font-size: 30px;
+}
+
+.heart-icon {
+    color: black;
+    font-size: 30px;
+}
