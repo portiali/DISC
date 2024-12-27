@@ -1,0 +1,41 @@
+h1 {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 40px;
+}
+.users-grid {
+    display: grid;
+    margin-top: 300px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 100vh;
+    width: 100%;
+    gap: 50px;
+
+}
+
+.error-message{
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.user-content {
+    color: white;
+
+}
+
+.back-link{
+    color: white;
+}
+
+.loading-container{
+    color: white;
+}
+
+.form-group{
+    color: white
+}
+

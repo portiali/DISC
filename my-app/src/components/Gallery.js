@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import winter from './images/winter.jpg'
-import squirrel from './images/squirrel.jpg'
-import joe from './images/joe.jpeg'
-import willie from './images/willie.jpeg'
+import winter from '../images/winter.jpg'
+import squirrel from '../images/squirrel.jpg'
+import joe from '../images/joe.jpeg'
+import willie from '../images/willie.jpeg'
 import './Gallery.css';
 function Gallery() {
     const [posts, setPosts] = useState([
@@ -21,7 +21,6 @@ function Gallery() {
             )
         );
     };
-
     useEffect(() => {
         console.log("new post liked or unliked")
     }, [posts.filter(post => post.liked)]);
