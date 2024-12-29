@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, } from "react-router-dom";
 import { createUser, getUserByID, updateUser } from "../api/users";
+import Input from "../components/Input";
 import "./Users.css"
 
 export const UserForm = () => {
@@ -84,11 +85,10 @@ export const UserForm = () => {
                     <label htmlFor="firstname" className = "form-label">
                         First Name
                     </label>
-                    <input id = "firstname" 
-                    className = "input" 
+                   
+                    <Input id = "firstname" 
                     value = {firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    required 
                     />
                 </div>
                 <div className = "form-group">

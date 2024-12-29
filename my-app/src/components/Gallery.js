@@ -3,6 +3,7 @@ import winter from '../images/winter.jpg'
 import squirrel from '../images/squirrel.jpg'
 import joe from '../images/joe.jpeg'
 import willie from '../images/willie.jpeg'
+
 import './Gallery.css';
 function Gallery() {
     const [posts, setPosts] = useState([
@@ -11,6 +12,8 @@ function Gallery() {
         { id: "willie", title: "Willie Always Wins", imgUrl: willie, liked: false, user: "joe" },
         { id: "squirrel", title: "Typical Squirrel", imgUrl: squirrel, liked: false, user: "greg" }
     ]);
+
+  
 
     const handleLikeClick = (postId) => {
         setPosts((prevPosts) =>
@@ -40,6 +43,6 @@ function Gallery() {
                 </div>
             ))}
         </div>
-    );
+        );
 }
 export default Gallery;
