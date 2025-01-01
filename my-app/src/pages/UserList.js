@@ -9,6 +9,7 @@ export const UserList = () => {
     // const [error, setError] = useState(null);
     // const [loading, setLoading] = useState(true);
     const [users, isLoading, error, setUsers, setError]= useUsers();
+    console.log(users);
     const [order, setOrder] = useState("");
     
     // useEffect(() => {

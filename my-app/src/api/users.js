@@ -1,9 +1,12 @@
 
 
-const API_BASE_URL = "https://disc-assignment-5-users-api.onrender.com";
+// const API_BASE_URL = "https://disc-assignment-5-users-api.onrender.com";
+const API_BASE_URL = "http://localhost:3005";
+
 
 export const getAllUsers = async () => {
-    const response = await fetch (`${API_BASE_URL}/api/users`);
+    // const response = await fetch (`${API_BASE_URL}/api/users`);
+    const response = await fetch (`${API_BASE_URL}/users`);
     if (!response.ok) throw new Error ("Failed ot fetch users");
     return response.json();
 }
