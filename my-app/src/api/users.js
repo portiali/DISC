@@ -1,8 +1,18 @@
 
 
 // const API_BASE_URL = "https://disc-assignment-5-users-api.onrender.com";
-const API_BASE_URL = "http://localhost:3005";
+// const API_BASE_URL = "http://localhost:3005";
+const API_BASE_URL = "http://localhost:3003";
 
+
+export const createUser = async (formData) => {
+    const response = await fetch(`${API_BASE_URL}/login`, {
+        method: "POST",
+        body: formData,
+    });
+    if (!response.ok) throw new Error("Failed to create user");
+    return response.json();
+};
 
 export const getAllUsers = async () => {
     // const response = await fetch (`${API_BASE_URL}/api/users`);
@@ -18,14 +28,14 @@ export const getUserByID = async (id) =>{
 }
 
 
-export const createUser = async (formData)=> {
-    const response = await fetch(`${API_BASE_URL}/api/users`, {
-        method: "POST",
-        body: formData,
-    });
-    if (!response.ok) throw new Error("Failed to create user");
-    return response.json();
-};
+// export const createUser = async (formData)=> {
+//     const response = await fetch(`${API_BASE_URL}/api/users`, {
+//         method: "POST",
+//         body: formData,
+//     });
+//     if (!response.ok) throw new Error("Failed to create user");
+//     return response.json();
+// };
 
 
 export const updateUser = async({id, formData})=> {
