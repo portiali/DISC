@@ -21,7 +21,7 @@ function UserLogin() {
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/api/login", {
+            const response = await fetch("http://localhost:3000/auth/signin", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -43,7 +43,7 @@ function UserLogin() {
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/api/register", {
+            const response = await fetch("http://localhost:3000/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -139,7 +139,7 @@ function UserLogin() {
                     </form>
                 </div>
             ) : (
-                
+
                 <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                     <div>
                         <h3>Your Token:</h3>
