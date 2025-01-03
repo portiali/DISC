@@ -21,7 +21,7 @@ function UserLogin() {
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/auth/signin", {
+            const response = await fetch("http://localhost:3003/auth/signin", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -32,8 +32,10 @@ function UserLogin() {
 
             const data = await response.json();
             if (data.error) throw new Error(data.error);
+            console.log(data);
 
-            setToken(data.token);
+            setToken(data.session.access_token);
+            console.log(data.token);
             setError("");
         } catch (err) {
             setError(err.message);
@@ -43,7 +45,8 @@ function UserLogin() {
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3000/auth/signup", {
+            
+            const response = await fetch("http://localhost:3003/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +66,7 @@ function UserLogin() {
 
     const fetchProtectedData = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/protected", {
+            const response = await fetch("http://localhost:3003/auth/protected", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
