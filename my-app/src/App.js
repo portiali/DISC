@@ -5,16 +5,19 @@ import {UserList} from './pages/UserList.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserDetail from './pages/UserDetail.js';
 import { UserForm } from './pages/UserForm.js';
+import { ProfileList } from './pages/ProfileList.js'
+import  UserLogin from './pages/UserLogin.js'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Login />} />
+        <Route index element={<UserLogin />} />
         <Route path="/home" element={<Home />} />
         <Route path= "/users" element = {<UserList/>}/>
         <Route path = "/users/:id" element = {<UserDetail/>}/>
         <Route path = "/users/new" element = {<UserForm/>}/>
+        <Route path = "/users/all" element = {<ProfileList/>}/>
         <Route path = "users/:id/edit" element = {<UserForm/>} />
       </Routes>
     </BrowserRouter>

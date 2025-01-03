@@ -16,10 +16,17 @@ export const createUser = async (formData) => {
 
 export const getAllUsers = async () => {
     // const response = await fetch (`${API_BASE_URL}/api/users`);
-    const response = await fetch (`${API_BASE_URL}/users`);
-    if (!response.ok) throw new Error ("Failed ot fetch users");
+    const response = await fetch(`${API_BASE_URL}/users/profiles`);
+    if (!response.ok) throw new Error("Failed ot fetch users");
     return response.json();
 }
+
+// export const getAllUsers = async () => {
+//     // const response = await fetch (`${API_BASE_URL}/api/users`);
+//     const response = await fetch (`${API_BASE_URL}/users`);
+//     if (!response.ok) throw new Error ("Failed ot fetch users");
+//     return response.json();
+// }
 
 export const getUserByID = async (id) =>{
     const response = await fetch(`${API_BASE_URL}/api/users/${id}`);

@@ -4,14 +4,14 @@ import "./Users.css"
 import UserCard from "../components/UserCard";
 import useUsers from "../hooks/useUsers";
 
-export const UserList = () => {
+export const ProfileList = () => {
     // const [users, setUsers] = useState([]);
     // const [error, setError] = useState(null);
     // const [loading, setLoading] = useState(true);
-    const [users, isLoading, error, setUsers, setError]= useUsers();
+    const [users, isLoading, error, setUsers, setError] = useUsers();
     console.log(users);
     const [order, setOrder] = useState("");
-    
+
     // useEffect(() => {
     //     loadUsers();
     // }, []);
@@ -28,42 +28,51 @@ export const UserList = () => {
     //     }
     // };
 
-    const handleDeleteUser = async (id) =>{
+    const handleDeleteUser = async (id) => {
         try {
             await deleteUser(id);
-            setUsers(users.filter((u)=>u.id != id));
+            setUsers(users.filter((u) => u.id != id));
             setError(null);
-        } catch (err){
+        } catch (err) {
             setError("Failed to delete user");
         }
     };
 
-    const handleChange = (e) =>{
+    const handleChange = (e) => {
         setOrder(e.target.value);
     };
 
     const handleSort = (users, order) => {
         console.log('running sort....');
-        if(order=="a-z"){
-            return [...users].sort((user1,user2)=>{
-               return user1.email.localeCompare(user2.email);
+        if (order == "a-z") {
+            return [...users].sort((user1, user2) => {
+                return user1.email.localeCompare(user2.email);
             });
-        } else if (order == "z-a"){
-            return [...users].sort((user1,user2)=>{
+        } else if (order == "z-a") {
+            return [...users].sort((user1, user2) => {
                 return user2.email.localeCompare(user1.email);
-             });
+            });
         } else {
             return users;
         }
-        
 
 
-        };
-    
-    const sortedUsers = useMemo(()=>(handleSort(users, order)), [users,order]);
 
-    
+    };
+
+    const sortedUsers = useMemo(() => (handleSort(users, order)), [users, order]);
+
+
     console.log('sorted users', sortedUsers);
+
+    if (isLoading) {
+        return (
+            <div className="loading-container">
+                <div className="loading-spinner"></div>
+                <p>Loading user details...</p>
+            </div>
+        )
+    }
 
     if (isLoading) {
         return (
@@ -76,29 +85,33 @@ export const UserList = () => {
     return (
         <div>
             <h1 className="title"> Current Users: </h1>
-            <select className = "order" onChange={handleChange} placeholder="Sort">
+            <select className="order" onChange={handleChange} placeholder="Sort">
                 <option selected disabled value="">Sort users</option>
                 <option value="a-z">
                     A-Z
                 </option>
-                <option value = "z-a">
+                <option value="z-a">
                     Z-A
                 </option>
             </select>
-            
-            
+
+
             <div className="users-grid">
                 {sortedUsers.map((user) => (
-                    <UserCard 
-                    key ={user.id} 
-                    user = {user}
-                    onDelete={handleDeleteUser}
-                    onEdit = {()=>{}}
-                    />
+                    <div className="user-content" key={user.id}>
+                        <h3 className="user-name">{user.first_name || "No first name"} {user.last_name || "No last name"}</h3>
+                        <p className="user-email">{user.email || "No email"}</p>
+                        <p className="user-bio">{user.user_profiles.bio || "No bio"}</p>
+                        <p className="user-profilePicture">{user.user_profiles.profile_picture ? (
+                            <img src={user.profilePicture} alt={`${user.firstname}'s profile`} />
+                        ) : (
+                            "No profile pic"
+                        )}</p>
+                    </div>
                 ))}
             </div>
         </div>
     )
 }
 
-export default UserList;
+export default ProfileList
