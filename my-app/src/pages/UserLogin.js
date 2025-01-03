@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../components/AuthContext";
 
 function UserLogin() {
-    const [token, setToken] = useState("");
+    const [token, setToken] = useAuth();
     const [protectedData, setProtectedData] = useState(null);
     const [error, setError] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get("access_token");
+        navigate("/home");
 
         if (accessToken) {
             setToken(accessToken);
             window.history.replaceState(null, "", window.location.pathname);
         }
-    }, []);
+    },[setToken, navigate]);
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -64,27 +67,27 @@ function UserLogin() {
         }
     };
 
-    const fetchProtectedData = async () => {
-        try {
-            const response = await fetch("http://localhost:3003/auth/protected", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-                credentials: "include",
-            });
+    // const fetchProtectedData = async () => {
+    //     try {
+    //         const response = await fetch("http://localhost:3003/auth/protected", {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //             credentials: "include",
+    //         });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || "Failed to fetch protected data");
-            }
+    //         if (!response.ok) {
+    //             const errorData = await response.json();
+    //             throw new Error(errorData.error || "Failed to fetch protected data");
+    //         }
 
-            const data = await response.json();
-            setProtectedData(data);
-            setError("");
-        } catch (err) {
-            setError(err.message);
-        }
-    };
+    //         const data = await response.json();
+    //         setProtectedData(data);
+    //         setError("");
+    //     } catch (err) {
+    //         setError(err.message);
+    //     }
+    // };
 
     return (
         <div style={{ padding: "20px", maxWidth: "500px", margin: "0 auto" }}>
@@ -105,7 +108,7 @@ function UserLogin() {
                 </div>
             )}
 
-            {!token ? (
+            {!token && (
                 <div>
                     <h2>Login</h2>
                     <form
@@ -141,39 +144,39 @@ function UserLogin() {
                         </div>
                     </form>
                 </div>
-            ) : (
+            // ) : (
 
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    <div>
-                        <h3>Your Token:</h3>
-                        <textarea
-                            readOnly
-                            value={token}
-                            style={{ width: "100%", height: "100px" }}
-                        />
-                    </div>
+            //     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            //         <div>
+            //             <h3>Your Token:</h3>
+            //             <textarea
+            //                 readOnly
+            //                 value={token}
+            //                 style={{ width: "100%", height: "100px" }}
+            //             />
+            //         </div>
 
-                    <button onClick={fetchProtectedData} style={{ padding: "8px" }}>
-                        Fetch Protected Data
-                    </button>
+            //         <button onClick={fetchProtectedData} style={{ padding: "8px" }}>
+            //             Fetch Protected Data
+            //         </button>
 
-                    {protectedData && (
-                        <div>
-                            <h3>Protected Data:</h3>
-                            <pre>{JSON.stringify(protectedData, null, 2)}</pre>
-                        </div>
-                    )}
+            //         {protectedData && (
+            //             <div>
+            //                 <h3>Protected Data:</h3>
+            //                 <pre>{JSON.stringify(protectedData, null, 2)}</pre>
+            //             </div>
+            //         )}
 
-                    <button
-                        onClick={() => {
-                            setToken("");
-                            setProtectedData(null);
-                        }}
-                        style={{ padding: "8px" }}
-                    >
-                        Logout
-                    </button>
-                </div>
+            //         <button
+            //             onClick={() => {
+            //                 setToken("");
+            //                 setProtectedData(null);
+            //             }}
+            //             style={{ padding: "8px" }}
+            //         >
+            //             Logout
+            //         </button>
+            //     </div>
             )}
         </div>
     );

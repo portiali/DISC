@@ -7,12 +7,15 @@ import UserDetail from './pages/UserDetail.js';
 import { UserForm } from './pages/UserForm.js';
 import { ProfileList } from './pages/ProfileList.js'
 import  UserLogin from './pages/UserLogin.js'
+import { AuthProvider } from './components/AuthContext.js';
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Routes>
-        <Route index element={<UserLogin />} />
+        <Route index element={<Login />} />
+        <Route path="/login" element = {<UserLogin/>}/>
         <Route path="/home" element={<Home />} />
         <Route path= "/users" element = {<UserList/>}/>
         <Route path = "/users/:id" element = {<UserDetail/>}/>
@@ -21,6 +24,7 @@ function App() {
         <Route path = "users/:id/edit" element = {<UserForm/>} />
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
 
   );
 }
