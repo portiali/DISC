@@ -4,10 +4,12 @@ import React, { createContext, useState, useContext } from "react";
 const AuthContext = createContext();
 
 // Create a custom hook to access the context
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(""); // Token state
+    const [token, setToken] = useState(null); // Token state
 
     return (
         <AuthContext.Provider value={{ token, setToken }}>

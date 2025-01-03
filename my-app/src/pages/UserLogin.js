@@ -3,21 +3,38 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
 
 function UserLogin() {
-    const [token, setToken] = useAuth();
-    const [protectedData, setProtectedData] = useState(null);
+    const {token, setToken} = useAuth();
+    // const [protectedData, setProtectedData] = useState(null);
     const [error, setError] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const [hasNavigated, setHasNavigated] = useState(false);
+
+    useEffect(()=>{
+        console.log("Token state updated:", token);
+        if (token && !hasNavigated){
+            setTimeout(() => navigate("/home"), 100);
+            // console.log(token);
+            setHasNavigated(true);
+            navigate("/home");
+        }
+    }, [token, navigate]);
 
     useEffect(() => {
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get("access_token");
-        navigate("/home");
+        // navigate("/home");
 
         if (accessToken) {
             setToken(accessToken);
             window.history.replaceState(null, "", window.location.pathname);
+        }
+        if (token && !hasNavigated) {
+            setTimeout(() => navigate("/home"), 100);
+            // console.log(token);
+            setHasNavigated(true);
+            navigate("/home");
         }
     },[setToken, navigate]);
 
@@ -38,8 +55,15 @@ function UserLogin() {
             console.log(data);
 
             setToken(data.session.access_token);
+
             console.log(data.token);
             setError("");
+            if (token && !hasNavigated) {
+                setTimeout(() => navigate("/home"), 100);
+                // console.log(token);
+                setHasNavigated(true);
+                navigate("/home");
+            }
         } catch (err) {
             setError(err.message);
         }
