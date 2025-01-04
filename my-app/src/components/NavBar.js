@@ -19,7 +19,8 @@ function NavBar() {
                     <a>home</a></li>
                 <li><i class="fa-regular fa-square-plus"></i><a>create</a></li>
                 <li><i class="fa-solid fa-medal"></i><a>leaderboard</a></li>
-                <li><i class="fa-solid fa-comment-dots"></i><a>messages</a></li>
+                <li><i class="fa-regular fa-user"></i><a>my profile</a></li>
+                <li><i class="fa-solid fa-users"></i><a>all profiles</a></li>
                 {/* <li>  <p>Count: {count}</p></li>
                 <li><button onClick={addCount}>Increment</button></li> */}
             </ul>
