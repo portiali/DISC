@@ -47,7 +47,7 @@ export const getUserByID = async (id) =>{
 
 
 export const updateUser = async({id, formData})=> {
-    const response = await fetch (`${API_BASE_URL}/api/users/${id}`,{
+    const response = await fetch (`${API_BASE_URL}/users/${id}/edit`,{
         method: "PUT",
         body: formData,
 

@@ -17,7 +17,7 @@ function App() {
         <Route index element={<UserLogin/>} />
         {/* <Route path="/login" element = {<UserLogin/>}/> */}
         <Route path="/home" element={<Home />} />
-        <Route path= "/users" element = {<UserList/>}/>
+       {/* <Route path= "/users" element = {<UserList/>}/> */}
         <Route path = "/users/:id" element = {<UserDetail/>}/>
         <Route path = "/users/new" element = {<UserForm/>}/>
         <Route path = "/users/all" element = {<ProfileList/>}/>

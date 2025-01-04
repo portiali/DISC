@@ -9,7 +9,7 @@ import { useAuth } from "../hooks/AuthContext";
 import useUsers from "../hooks/useUsers";
 
 export const UserForm = () => {
-    const {token, setToken, userId, setUserId } = useAuth();
+    const { token, setToken, userId, setUserId } = useAuth();
     const [users, isLoading, error, setUsers, setError] = useUsers();
     const { id } = useParams();
     const navigate = useNavigate();
@@ -21,9 +21,9 @@ export const UserForm = () => {
     const [graduationYear, setGradYear] = useState("");
     const [profilePic, setProfilePic] = useState("");
     //const [error, setError] = useState(null);
-    const[loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-//use useUsers!!!!
+    //use useUsers!!!!
 
     useEffect(() => {
         if (userId) {
@@ -48,11 +48,8 @@ export const UserForm = () => {
         try {
             const formData = new FormData();
             formData.append("firstname", firstName);
-            formData.append("lastname", lastName);
             formData.append("email", email);
             formData.append("bio", bio);
-            formData.append("major", major);
-            formData.append("graduationyear", graduationYear);
             if (profilePic) {
                 formData.append("profilepicture", profilePic);
             }
@@ -72,86 +69,82 @@ export const UserForm = () => {
                 console.log("Response:", response);
             }
             navigate("/");
-        } catch (err){
+        } catch (err) {
             console.log('err saving user', err.message);
-            setError("Failed to save user");  
+            setError("Failed to save user");
         } finally {
             setLoading(false);
         }
     };
     return (
         <div>
-            <NavBar/>
-            <SignOut/>
-        <div className = "form-container">
+            <NavBar />
+            <SignOut />
+            <div className="form-container">
 
-            <h1 className = "title">
-                {id? "edit user": "create user"}
-            </h1>
-            {error && <div className = "error-message">{error}</div>}
-            <form onSubmit = {handleSubmit}>
-                <div className = "form-group">
-                    <label htmlFor="firstname" className = "form-label">
-                        first name
-                    </label>
-                   
-                    <Input id = "firstname" 
-                    value = {firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    />
-                </div>
-                <div className = "form-group">
-                    <label htmlFor="email" className = "form-label">
-                        email
-                    </label>
-                    <input id = "email" 
-                    className = "input" 
-                    value = {email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required 
-                    />
-                </div>
-                <div className = "form-group">
-                    <label htmlFor="bio" className = "form-label">
-                        bio
-                    </label>
-                    <input id = "bio" 
-                    className = "input" 
-                    value = {bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    required 
-                    />
-                </div>
-                 <div className = "form-group">
-                    <label htmlFor="profilepic" className = "form-label">
-                        profile picture
-                    </label>
-                    <input id = "profile-pic" 
-                    className = "input" 
-                    type = "file"
-                    accept = "image/*"
-                    onChange={(e) => setProfilePic(e.target.files?.[0] || null)}
-                    required = {!id}
-                    />
-                </div>
-                <div className = "button-group">
-                    <button 
-                    type = "submit"
-                    disabled = {loading}
-                    className = "button button-primary"
-                    >
-                        {loading? "Saving...": id? "Update": "Create"}
-                    </button>
-                    <button
-                    type = "button"
-                    onClick = {() => navigate("/")}
-                    className = "button button-secondary"
-                    >
-                        Cancel
-                    </button>
-                </div>        
-            </form>
-        </div>
+                <h1 className="title">
+                    {id ? "edit user" : "create user"}
+                </h1>
+                {error && <div className="error-message">{error}</div>}
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="firstname" className="form-label">
+                            first name
+                        </label>
+
+                        <Input id="firstname"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email" className="form-label">
+                            email
+                        </label>
+                        <Input id='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="bio" className="form-label">
+                            bio
+                        </label>
+                        <Input id='bio'
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="profilepic" className="form-label">
+                            profile picture
+                        </label>
+                        <input id="profile-pic"
+                            className="input"
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setProfilePic(e.target.files?.[0] || null)}
+                            required={!id}
+                        />
+                    </div>
+                    <div className="button-group">
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="button button-primary"
+                        >
+                            {loading ? "Saving..." : id ? "Update" : "Create"}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => navigate("/")}
+                            className="button button-secondary"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
     );

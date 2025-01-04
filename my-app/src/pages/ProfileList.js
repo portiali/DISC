@@ -90,9 +90,9 @@ export const ProfileList = () => {
         <div>
             <NavBar/>
             <SignOut/>
-            <h1 className="title"> Current Users: </h1>
+            <h1 className="title"> current users: </h1>
             <select className="order" onChange={handleChange} placeholder="Sort">
-                <option selected disabled value="">Sort users</option>
+                <option selected disabled value="">sort users</option>
                 <option value="a-z">
                     A-Z
                 </option>
