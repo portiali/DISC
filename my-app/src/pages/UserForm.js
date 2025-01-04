@@ -47,28 +47,27 @@ export const UserForm = () => {
         setLoading(true);
         try {
             const formData = new FormData();
-            formData.append("firstname", firstName);
+            formData.append("first_name", firstName);
             formData.append("email", email);
             formData.append("bio", bio);
-            if (profilePic) {
-                formData.append("profilepicture", profilePic);
+            formData.append("profile_picture", "temp pic");
+            console.log("ID HERE", id);
+            // if (profilePic) {
+            //     formData.append("profilepicture", profilePic);
+            // }
+            console.log('FORM DATA HERE', formData);
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}:`, value);
             }
-            console.log('form data', formData);
-            console.log(formData.get('profilepicture'));
-            console.log(formData.get('firstname'));
-            console.log(formData.get('lastname'));
-            console.log(formData.get('email'));
-            console.log(formData.get('bio'));
-            console.log(formData.get('major'));
-            console.log(formData.get('graduationyear'));
+
             if (id) {
-                const response = await updateUser(id, formData);
+                const response = await updateUser({id, formData});
                 console.log("Response:", response);
             } else {
                 const response = await createUser(formData);
                 console.log("Response:", response);
             }
-            navigate("/");
+            navigate(`/users/${id}/edit`, { replace: true });
         } catch (err) {
             console.log('err saving user', err.message);
             setError("Failed to save user");
@@ -115,7 +114,7 @@ export const UserForm = () => {
                             onChange={(e) => setBio(e.target.value)}
                         />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label htmlFor="profilepic" className="form-label">
                             profile picture
                         </label>
@@ -126,7 +125,7 @@ export const UserForm = () => {
                             onChange={(e) => setProfilePic(e.target.files?.[0] || null)}
                             required={!id}
                         />
-                    </div>
+                    </div> */}
                     <div className="button-group">
                         <button
                             type="submit"
