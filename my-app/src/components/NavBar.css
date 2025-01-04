@@ -1,18 +1,46 @@
-ul {
+/* ul {
     display: flex;
     list-style-type: none;
     align-items: center;
     height: 80px;
     margin: 0;
+} */
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    gap: 100px;
 }
 
-li {
-    margin-right: 30px;
-}
 
 nav {
     background-color: #24333C;
     color: white;
     height: 80px;
     font-size: 20px;
+}
+
+nav ul li {
+    margin-right: -5px;
+    /* Reduce space between items */
+}
+
+/* Make 'campusclicks' title larger and bolder */
+nav ul li:first-child {
+    margin-left:40px;
+    font-size: 24px;
+    /* Increase the font size */
+    /* Make it bold */
+    letter-spacing: 2px;
+    /* Optional: Add spacing between letters for extra emphasis */
+}
+
+.bold-c {
+    font-weight: 900;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        /* Adds shadow for emphasis */
 }

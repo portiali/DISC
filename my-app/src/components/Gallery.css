@@ -19,9 +19,14 @@
     justify-content: center;
     /* Horizontally center the grid */
     align-items: center;
+
+    width: 90vw;
+    /* Take up 90% of the viewport width */
+    height: auto;
+    /* Let the height adjust naturally */
     /* Vertically center the grid */
-    height: 100vh;
-    /* Full viewport height for centering */
+    /* height: 100vh;
+    Full viewport height for centering */
     margin: 0 auto;
     /* Center container itself */
 
@@ -42,6 +47,7 @@
     object-fit: cover;
     margin: 0;
     border-radius: 10%;
+
 }
 
 .post img {
@@ -136,14 +142,15 @@
     cursor: not-allowed;
 }
 
-.SignOut{
+.SignOut {
     position: absolute;
-        /* Position relative to the page or its nearest positioned ancestor */
-        top: 30px;
-        /* Distance from the top of the page */
-        right: 30px;
-        /* Distance from the right of the page */
+    /* Position relative to the page or its nearest positioned ancestor */
+    top: 30px;
+    /* Distance from the top of the page */
+    right: 30px;
+    /* Distance from the right of the page */
 }
+
 .SignOut button {
 
     font-family: Arial, Helvetica, sans-serif;
@@ -158,6 +165,7 @@
     transition: background-color 0.3s ease;
 
 }
+
 .SignOut button:hover {
     background-color: lightseagreen;
 }
