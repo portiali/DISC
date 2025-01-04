@@ -5,7 +5,38 @@
     gap: 20px;
 }
 
-.post img {
+.gallery-container {
+    /* display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; */
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    /* Two rows */
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 2px;
+    justify-content: center;
+    /* Horizontally center the grid */
+    align-items: center;
+    /* Vertically center the grid */
+    height: 100vh;
+    /* Full viewport height for centering */
+    margin: 0 auto;
+    /* Center container itself */
+
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.image-item img {
     width: 300px;
     height: 250px;
     object-fit: cover;
@@ -13,9 +44,40 @@
     border-radius: 10%;
 }
 
+.post img {
+    width: 700px;
+    height: 250px;
+    object-fit: cover;
+    margin: 0;
+    border-radius: 10%;
+}
+
+.image-item h3 {
+    margin-top: 30px;
+    color: white;
+}
+
 .img-title {
     margin-top: 30px;
     color: white;
+}
+
+
+.heart-icon {
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.heart-icon.liked {
+    color: palevioletred;
+    /* Change to pink when liked */
+}
+
+.heart-icon:hover {
+    color: pink;
+    /* Optional: Change color on hover for better UX */
 }
 
 .fas-fa-heart {
@@ -32,4 +94,70 @@
 .heart-icon {
     color: white;
     font-size: 30px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    /* Push buttons to the edges */
+    align-items: center;
+    /* Vertically align buttons */
+    width: calc(100% - 100px);
+    /* Take up the full width of the page */
+    position: absolute;
+    /* Position relative to the viewport */
+    bottom: 50%;
+    /* Center vertically on the page */
+    transform: translateY(50%);
+    /* Adjust for perfect vertical alignment */
+    padding: 0 20px;
+    /* Add spacing from the edges */
+}
+
+.pagination button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: lightblue;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: lightseagreen;
+}
+
+.pagination button:disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.SignOut{
+    position: absolute;
+        /* Position relative to the page or its nearest positioned ancestor */
+        top: 30px;
+        /* Distance from the top of the page */
+        right: 30px;
+        /* Distance from the right of the page */
+}
+.SignOut button {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: lightblue;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+}
+.SignOut button:hover {
+    background-color: lightseagreen;
 }

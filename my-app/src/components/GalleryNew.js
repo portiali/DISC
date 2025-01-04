@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/AuthContext';
+import './Gallery.css'
 
 function GalleryNew() {
     const {token, setToken, userId, setUserId } = useAuth();
@@ -88,13 +89,13 @@ function GalleryNew() {
             ))}
             <div className="pagination">
                 <button onClick={goToPreviousPage} disabled={currentPage === 0}>
-                    Back
+                    back
                 </button>
                 <button
                     onClick={goToNextPage}
                     disabled={(currentPage + 1) * imagesPerPage >= images.length}
                 >
-                    Next
+                    next
                 </button>
             </div>
         </div>
