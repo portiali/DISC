@@ -14,11 +14,8 @@ export const UserForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [bio, setBio] = useState("");
-    const [major, setMajor] = useState("");
-    const [graduationYear, setGradYear] = useState("");
     const [profilePic, setProfilePic] = useState("");
     //const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
