@@ -145,7 +145,7 @@
 .SignOut {
     position: absolute;
     /* Position relative to the page or its nearest positioned ancestor */
-    top: 30px;
+    top: 20px;
     /* Distance from the top of the page */
     right: 30px;
     /* Distance from the right of the page */

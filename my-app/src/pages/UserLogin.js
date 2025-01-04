@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/AuthContext";
+import "./Login.css";
 
 function UserLogin() {
     const {token, setToken, userId, setUserId } = useAuth();
@@ -95,8 +96,8 @@ function UserLogin() {
     };
 
     return (
-        <div style={{ padding: "20px", maxWidth: "500px", margin: "0 auto" }}>
-            <h1>Welcome to CampusClicks!</h1>
+        <div className = "user-login-container" style={{ padding: "20px", maxWidth: "500px", margin: "0 auto" }}>
+            <h1>welcome to   <span className="bold-c">c</span>ampus<span className="bold-c">c</span>licks!</h1>
 
             {error && (
                 <div
@@ -114,8 +115,8 @@ function UserLogin() {
             )}
 
             {!token && (
-                <div>
-                    <h2>Login</h2>
+                <div className = "login-container">
+                    <h2>login</h2>
                     <form
                         style={{ display: "flex", flexDirection: "column", gap: "10px" }}
                     >
@@ -133,18 +134,18 @@ function UserLogin() {
                             onChange={(e) => setPassword(e.target.value)}
                             style={{ padding: "8px" }}
                         />
-                        <div style={{ display: "flex", gap: "10px" }}>
-                            <button
+                        <div className="user-login-button-container"  style={{ display: "flex", gap: "10px" }}>
+                            <button className="user-login-button"
                                 onClick={handleSignIn}
                                 style={{ padding: "10px 20px", flex: 1 }}
                             >
-                                Sign In
+                                sign in
                             </button>
-                            <button
+                        <button className="user-login-button"
                                 onClick={handleSignUp}
                                 style={{ padding: "10px 20px", flex: 1 }}
                             >
-                                Sign Up
+                                sign up
                             </button>
                         </div>
                     </form>

@@ -21,7 +21,7 @@ nav {
     background-color: #24333C;
     color: white;
     height: 80px;
-    font-size: 20px;
+    font-size: 23px;
 }
 
 nav ul li {
@@ -32,7 +32,7 @@ nav ul li {
 /* Make 'campusclicks' title larger and bolder */
 nav ul li:first-child {
     margin-left:40px;
-    font-size: 24px;
+    font-size: 30px;
     /* Increase the font size */
     /* Make it bold */
     letter-spacing: 2px;

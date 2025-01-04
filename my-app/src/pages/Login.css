@@ -1,88 +1,128 @@
 /* Global Styles */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #24333C;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #24333C;
+  height: 100vh;
 
-  }
-  
-  /* Login Container */
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Login Box */
-  .login-box {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    width: 400px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .login-box h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #24333C;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  
-  /* Login Form */
-  .login-form input {
-    width: 100%;
-    padding: 10px 15px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: #fafafa;
-  }
-  
-  .login-form input:focus {
-    outline: none;
-    border-color: #0077ff;
-  }
-  
-  /* Login Button */
-  .login-btn {
-    width: 100%;
-    padding: 10px 15px;
-    margin-top: 10px;
-    background-color: #0077ff;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-btn:hover {
-    background-color: #005bb5;
-  }
-  
-  /* Signup Prompt */
-  .signup-prompt {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
-    
-  }
-  
-  .signup-prompt a {
-    color: #0077ff;
-    text-decoration: none;
-  }
-  
-  .signup-prompt a:hover {
-    text-decoration: underline;
-  }
-  
+}
+
+.login-container {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.user-login-container h1 {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.bold-c {
+  font-weight: 900px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  /* Adds shadow for emphasis */
+}
+
+
+.user-login-container h2 {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+
+.user-login-button {
+  padding: 10px 20px;
+  flex: 1;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.user-login-button:hover {
+  background-color: lightblue;
+}
+
+/* Flexbox container for buttons */
+.user-login-button-container {
+  display: flex;
+  gap: 10px;
+}
+
+
+
+/* Login Box */
+.login-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 400px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #24333C;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Login Form */
+.login-form input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: #fafafa;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #0077ff;
+}
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 10px;
+  background-color: #0077ff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Signup Prompt */
+.signup-prompt {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+
+}
+
+.signup-prompt a {
+  color: #0077ff;
+  text-decoration: none;
+}
+
+.signup-prompt a:hover {
+  text-decoration: underline;
+}
