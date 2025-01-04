@@ -56,7 +56,10 @@ function UserLogin() {
             console.log(data);
 
             setToken(data.session.access_token);
+            console.log("checking for token: ", data.session.access_token);
+            console.log("TOKEN FROM LOGIN: ", token);
             setUserId(data.session.user.id);
+            console.log("LOGIN TOKEN AND USERID", token, userId);
 
             console.log(data.token);
             setError("");

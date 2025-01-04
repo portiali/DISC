@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getUserByID } from "../api/users";
 import UserCard from "../components/UserCard";
+import { useAuth } from "../hooks/AuthContext";
 
 function UserDetail() {
+    const {token, setToken} = useAuth();
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [error, setError] = useState("");
@@ -18,7 +20,7 @@ function UserDetail() {
 
     const loadUser = async (id) => {
         try {
-            const data = await getUserByID(id);
+            const data = await getUserByID(id, token);
             setUser(data);
         } catch (err) {
             setError("Failed to load user");

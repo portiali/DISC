@@ -30,7 +30,7 @@ export const UserForm = () => {
 
     const loadUser = async (id) => {
         try {
-            const user = await getUserByID(id);
+            const user = await getUserByID(id, token);
             setFirstName(user.first_name);
             setEmail(user.email);
             setBio(user.user_profiles.bio);
@@ -58,7 +58,7 @@ export const UserForm = () => {
             }
 
             if (id) {
-                const response = await updateUser({id, formData});
+                const response = await updateUser({id, formData, token});
                 console.log("Response:", response);
             } else {
                 const response = await createUser(formData);

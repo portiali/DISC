@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { getAllUsers } from "../api/users";
+import { useAuth } from "./AuthContext";
 
 function useUsers() {
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const {token, setToken} = useAuth();
 
     useEffect(() => {
-        loadUsers();
-    }, []);
+        loadUsers(token);
+    }, [token]);
 
-    const loadUsers = async () => {
+    const loadUsers = async (token) => {
         try {
-            const data = await getAllUsers();
+            const data = await getAllUsers(token);
             console.log(data);
             setUsers(data);
         } catch (err) {

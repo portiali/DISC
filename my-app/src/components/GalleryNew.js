@@ -12,23 +12,37 @@ function GalleryNew() {
 
     useEffect(() => {
         // Fetch images
-        const fetchImages = async () => {
+        const fetchImages = async (token) => {
             try {
-                const response = await fetch('http://localhost:3003/users/images'); 
-                const data = await response.json();
-                setImages(data);
+                // const response = await fetch('http://localhost:3003/users/images'); 
+                // const data = await response.json();
+                // setImages(data);
 
                 // Check which images the user has liked
                 // const likedResponse = await fetch(`http://localhost:3003/users/liked?userId=${userId}`);
                 // const likedData = await likedResponse.json();
                 // const likedSet = new Set(likedData.map((like) => like.image_id));
                 // setLikedImages(likedSet);
+                console.log("Token being sent HEREEEE:", token);
+                const response = await fetch('http://localhost:3003/users/images', {
+                    method: 'GET', // Default method is GET, but being explicit is good practice
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+                    },
+                });
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                setImages(data);
+
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
-        fetchImages();
+        fetchImages(token);
     }, [userId]);
 
     const handleLikeClick = async (imageId) => {
