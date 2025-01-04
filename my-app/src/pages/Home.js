@@ -1,6 +1,7 @@
 import NavBar from '../components/NavBar.js';
 import Gallery from '../components/Gallery.js';
-import {useAuth} from "../components/AuthContext.js"
+import GalleryNew from '../components/GalleryNew.js';
+import {useAuth} from "../hooks/AuthContext.js"
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -26,7 +27,7 @@ function Home() {
   return (
     <div className="Home">
       <NavBar/>
-      <Gallery/>
+      <GalleryNew/>
       <button onClick = {handleSignOut}> Sign Out</button>
     </div>
   );

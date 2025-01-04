@@ -7,7 +7,7 @@ import UserDetail from './pages/UserDetail.js';
 import { UserForm } from './pages/UserForm.js';
 import { ProfileList } from './pages/ProfileList.js'
 import  UserLogin from './pages/UserLogin.js'
-import { AuthProvider } from './components/AuthContext.js';
+import { AuthProvider } from './hooks/AuthContext.js';
 
 function App() {
   return (

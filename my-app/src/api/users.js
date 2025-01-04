@@ -6,7 +6,7 @@ const API_BASE_URL = "http://localhost:3003";
 
 
 export const createUser = async (formData) => {
-    const response = await fetch(`${API_BASE_URL}/login`, {
+    const response = await fetch(`${API_BASE_URL}/createnew`, {
         method: "POST",
         body: formData,
     });

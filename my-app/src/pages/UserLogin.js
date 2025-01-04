@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../components/AuthContext";
+import { useAuth } from "../hooks/AuthContext";
 
 function UserLogin() {
-    const {token, setToken} = useAuth();
+    const {token, setToken, userId, setUserId } = useAuth();
     // const [protectedData, setProtectedData] = useState(null);
     const [error, setError] = useState("");
     const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ function UserLogin() {
             setHasNavigated(true);
             navigate("/home");
         }
-    }, [token, navigate]);
+    }, [token, navigate, hasNavigated]);
 
     useEffect(() => {
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
@@ -36,7 +36,7 @@ function UserLogin() {
             setHasNavigated(true);
             navigate("/home");
         }
-    },[setToken, navigate]);
+    },[setToken, navigate, hasNavigated, token]);
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -55,6 +55,7 @@ function UserLogin() {
             console.log(data);
 
             setToken(data.session.access_token);
+            setUserId(data.session.user.id);
 
             console.log(data.token);
             setError("");
@@ -86,32 +87,12 @@ function UserLogin() {
             if (data.error) throw new Error(data.error);
 
             setError("Registration successful! Please sign in.");
+            //call apis for inserting into table here!
+
         } catch (err) {
             setError(err.message);
         }
     };
-
-    // const fetchProtectedData = async () => {
-    //     try {
-    //         const response = await fetch("http://localhost:3003/auth/protected", {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //             credentials: "include",
-    //         });
-
-    //         if (!response.ok) {
-    //             const errorData = await response.json();
-    //             throw new Error(errorData.error || "Failed to fetch protected data");
-    //         }
-
-    //         const data = await response.json();
-    //         setProtectedData(data);
-    //         setError("");
-    //     } catch (err) {
-    //         setError(err.message);
-    //     }
-    // };
 
     return (
         <div style={{ padding: "20px", maxWidth: "500px", margin: "0 auto" }}>
@@ -168,39 +149,7 @@ function UserLogin() {
                         </div>
                     </form>
                 </div>
-            // ) : (
 
-            //     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            //         <div>
-            //             <h3>Your Token:</h3>
-            //             <textarea
-            //                 readOnly
-            //                 value={token}
-            //                 style={{ width: "100%", height: "100px" }}
-            //             />
-            //         </div>
-
-            //         <button onClick={fetchProtectedData} style={{ padding: "8px" }}>
-            //             Fetch Protected Data
-            //         </button>
-
-            //         {protectedData && (
-            //             <div>
-            //                 <h3>Protected Data:</h3>
-            //                 <pre>{JSON.stringify(protectedData, null, 2)}</pre>
-            //             </div>
-            //         )}
-
-            //         <button
-            //             onClick={() => {
-            //                 setToken("");
-            //                 setProtectedData(null);
-            //             }}
-            //             style={{ padding: "8px" }}
-            //         >
-            //             Logout
-            //         </button>
-            //     </div>
             )}
         </div>
     );
