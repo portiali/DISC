@@ -1,9 +1,11 @@
 import './NavBar.css'
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from '../hooks/AuthContext';
 
 function NavBar() {
     const [count, setCount] = useState(1)
+    const {token, setToken, userId, setUserId } = useAuth();
     const addCount = () => {
         setCount(count + 1);
     }
@@ -20,7 +22,7 @@ function NavBar() {
                 <li><i class="fa-regular fa-square-plus"></i><Link>create</Link></li>
                 <li><i class="fa-solid fa-medal"></i><Link>leaderboard</Link></li>
                 <li><i class="fa-solid fa-users"></i><Link to="/users/all">all profiles</Link></li>
-                <li><i class="fa-regular fa-user"></i><Link>my profile</Link></li>
+                <li><i class="fa-regular fa-user"></i><Link to= {`/users/${userId}/edit`}>my profile</Link></li>
 
             </ul>
 

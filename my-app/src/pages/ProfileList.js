@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { getAllUsers, deleteUser } from "../api/users";
-import "./Users.css"
+// import "./Users.css"
 import UserCard from "../components/UserCard";
 import useUsers from "../hooks/useUsers";
+import "./ProfileList.css"
+
 
 export const ProfileList = () => {
     // const [users, setUsers] = useState([]);
@@ -99,7 +101,7 @@ export const ProfileList = () => {
             <div className="users-grid">
                 {sortedUsers.map((user) => (
                     <div className="user-content" key={user.id}>
-                        <h3 className="user-name">{user.first_name || "No first name"} {user.last_name || "No last name"}</h3>
+                        <h3 className="user-name">{user.first_name || "No first name"}</h3>
                         <p className="user-email">{user.email || "No email"}</p>
                         <p className="user-bio">{user.user_profiles.bio || "No bio"}</p>
                         <p className="user-profilePicture">{user.user_profiles.profile_picture ? (
