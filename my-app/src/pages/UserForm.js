@@ -49,9 +49,9 @@ export const UserForm = () => {
             formData.append("bio", bio);
             formData.append("profile_picture", "temp pic");
             console.log("ID HERE", id);
-            // if (profilePic) {
-            //     formData.append("profilepicture", profilePic);
-            // }
+            if (profilePic) {
+                formData.append("profilepicture", profilePic);
+            }
             console.log('FORM DATA HERE', formData);
             for (let [key, value] of formData.entries()) {
                 console.log(`${key}:`, value);
@@ -111,7 +111,7 @@ export const UserForm = () => {
                             onChange={(e) => setBio(e.target.value)}
                         />
                     </div>
-                    {/* <div className="form-group">
+                    <div className="form-group">
                         <label htmlFor="profilepic" className="form-label">
                             profile picture
                         </label>
@@ -122,7 +122,7 @@ export const UserForm = () => {
                             onChange={(e) => setProfilePic(e.target.files?.[0] || null)}
                             required={!id}
                         />
-                    </div> */}
+                    </div>
                     <div className="button-group">
                         <button
                             type="submit"

@@ -8,6 +8,8 @@ import { UserForm } from './pages/UserForm.js';
 import { ProfileList } from './pages/ProfileList.js'
 import  UserLogin from './pages/UserLogin.js'
 import { AuthProvider } from './hooks/AuthContext.js';
+import Upload from './pages/Upload.js';
+import Leaderboard from './pages/Leaderboard.js';
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
         <Route path = "/users/new" element = {<UserForm/>}/>
         <Route path = "/users/all" element = {<ProfileList/>}/>
         <Route path = "users/:id/edit" element = {<UserForm/>} />
+        <Route path = "/users/upload" element = {<Upload/>}/>
+        <Route path="/users/leaderboard" element={<Leaderboard/>} />
+
       </Routes>
     </BrowserRouter>
     </AuthProvider>

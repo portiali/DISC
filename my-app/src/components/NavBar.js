@@ -19,8 +19,8 @@ function NavBar() {
                     campusclicks</li> */}
                 <li><i class="fa-solid fa-house"></i>
                     <Link to = "/home">home</Link></li>
-                <li><i class="fa-regular fa-square-plus"></i><Link>create</Link></li>
-                <li><i class="fa-solid fa-medal"></i><Link>leaderboard</Link></li>
+                <li><i class="fa-regular fa-square-plus"></i><Link to = "/users/upload">create</Link></li>
+                <li><i class="fa-solid fa-medal"></i><Link to = "/users/leaderboard">leaderboard</Link></li>
                 <li><i class="fa-solid fa-users"></i><Link to="/users/all">all profiles</Link></li>
                 <li><i class="fa-regular fa-user"></i><Link to= {`/users/${userId}/edit`}>my profile</Link></li>
 
