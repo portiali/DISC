@@ -13,7 +13,7 @@ nav ul {
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
-    gap: 70px;
+    gap: 60px;
 }
 
 
@@ -41,7 +41,7 @@ nav ul li:first-child {
 }
 
 nav ul li i {
-    margin-right: 8px;
+    margin-right: 5px;
     /* Adds space between the icon and the text */
 }
 
@@ -50,4 +50,20 @@ nav ul li i {
     font-weight: 900;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         /* Adds shadow for emphasis */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    /* Changes text color on hover */
+    background-color: lightblue;
+    /* Background color on hover */
+    border-radius: 40px;
+    /* Optional: gives a rounded corner effect on hover */
 }

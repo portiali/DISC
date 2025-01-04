@@ -1,5 +1,5 @@
 import './NavBar.css'
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function NavBar() {
@@ -16,13 +16,12 @@ function NavBar() {
                 {/* <li>
                     campusclicks</li> */}
                 <li><i class="fa-solid fa-house"></i>
-                    <a>home</a></li>
-                <li><i class="fa-regular fa-square-plus"></i><a>create</a></li>
-                <li><i class="fa-solid fa-medal"></i><a>leaderboard</a></li>
-                <li><i class="fa-regular fa-user"></i><a>my profile</a></li>
-                <li><i class="fa-solid fa-users"></i><a>all profiles</a></li>
-                {/* <li>  <p>Count: {count}</p></li>
-                <li><button onClick={addCount}>Increment</button></li> */}
+                    <Link to = "/home">home</Link></li>
+                <li><i class="fa-regular fa-square-plus"></i><Link>create</Link></li>
+                <li><i class="fa-solid fa-medal"></i><Link>leaderboard</Link></li>
+                <li><i class="fa-solid fa-users"></i><Link to="/users/all">all profiles</Link></li>
+                <li><i class="fa-regular fa-user"></i><Link>my profile</Link></li>
+
             </ul>
 
         </nav>
