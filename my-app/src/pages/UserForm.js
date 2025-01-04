@@ -3,8 +3,14 @@ import { useParams, useNavigate, } from "react-router-dom";
 import { createUser, getUserByID, updateUser } from "../api/users";
 import Input from "../components/Input";
 import "./Users.css"
+import NavBar from "../components/NavBar";
+import SignOut from "../components/SignOut";
+import { useAuth } from "../hooks/AuthContext";
+import useUsers from "../hooks/useUsers";
 
 export const UserForm = () => {
+    const {token, setToken, userId, setUserId } = useAuth();
+    const [users, isLoading, error, setUsers, setError] = useUsers();
     const { id } = useParams();
     const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
@@ -14,24 +20,23 @@ export const UserForm = () => {
     const [major, setMajor] = useState("");
     const [graduationYear, setGradYear] = useState("");
     const [profilePic, setProfilePic] = useState("");
-    const [error, setError] = useState(null);
+    //const [error, setError] = useState(null);
     const[loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (id) {
-            loadUser(id);
-        }
-    }, [id]);
+//use useUsers!!!!
 
-    const loadUser = async (userId) => {
+    useEffect(() => {
+        if (userId) {
+            loadUser(userId);
+        }
+    }, [userId]);
+
+    const loadUser = async (id) => {
         try {
-            const user = await getUserByID(userId);
-            setFirstName(user.firstname);
-            setLastName(user.lastname);
+            const user = await getUserByID(id);
+            setFirstName(user.first_name);
             setEmail(user.email);
-            setBio(user.bio);
-            setMajor(user.major);
-            setGradYear(user.graduationyear);
+            setBio(user.user_profiles.bio);
         } catch (err) {
             setError("Failed to load user");
         }
@@ -75,15 +80,19 @@ export const UserForm = () => {
         }
     };
     return (
+        <div>
+            <NavBar/>
+            <SignOut/>
         <div className = "form-container">
+
             <h1 className = "title">
-                {id? "Edit User": "Create User"}
+                {id? "edit user": "create user"}
             </h1>
             {error && <div className = "error-message">{error}</div>}
             <form onSubmit = {handleSubmit}>
                 <div className = "form-group">
                     <label htmlFor="firstname" className = "form-label">
-                        First Name
+                        first name
                     </label>
                    
                     <Input id = "firstname" 
@@ -92,19 +101,8 @@ export const UserForm = () => {
                     />
                 </div>
                 <div className = "form-group">
-                    <label htmlFor="lastname" className = "form-label">
-                        Last Name
-                    </label>
-                    <input id = "lastname" 
-                    className = "input" 
-                    value = {lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required 
-                    />
-                </div>
-                <div className = "form-group">
                     <label htmlFor="email" className = "form-label">
-                        Email
+                        email
                     </label>
                     <input id = "email" 
                     className = "input" 
@@ -115,7 +113,7 @@ export const UserForm = () => {
                 </div>
                 <div className = "form-group">
                     <label htmlFor="bio" className = "form-label">
-                        Bio
+                        bio
                     </label>
                     <input id = "bio" 
                     className = "input" 
@@ -124,32 +122,9 @@ export const UserForm = () => {
                     required 
                     />
                 </div>
-                <div className = "form-group">
-                    <label htmlFor="major" className = "form-label">
-                        Major
-                    </label>
-                    <input id = "major" 
-                    className = "input" 
-                    value = {major}
-                    onChange={(e) => setMajor(e.target.value)}
-                    required 
-                    />
-                </div>
-                <div className = "form-group">
-                    <label htmlFor="graduationyear" className = "form-label">
-                        Graduation Year
-                    </label>
-                    <input id = "gradYear" 
-                    className = "input" 
-                    value = {graduationYear}
-                    onChange={(e) => setGradYear(e.target.value)}
-                    required 
-                    />
-                </div>
-             
                  <div className = "form-group">
                     <label htmlFor="profilepic" className = "form-label">
-                        Profile Picture
+                        profile picture
                     </label>
                     <input id = "profile-pic" 
                     className = "input" 
@@ -176,6 +151,7 @@ export const UserForm = () => {
                     </button>
                 </div>        
             </form>
+        </div>
         </div>
 
     );

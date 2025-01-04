@@ -3,7 +3,9 @@ import { getAllUsers, deleteUser } from "../api/users";
 // import "./Users.css"
 import UserCard from "../components/UserCard";
 import useUsers from "../hooks/useUsers";
+import NavBar from "../components/NavBar";
 import "./ProfileList.css"
+import SignOut from "../components/SignOut";
 
 
 export const ProfileList = () => {
@@ -86,6 +88,8 @@ export const ProfileList = () => {
     }
     return (
         <div>
+            <NavBar/>
+            <SignOut/>
             <h1 className="title"> Current Users: </h1>
             <select className="order" onChange={handleChange} placeholder="Sort">
                 <option selected disabled value="">Sort users</option>
