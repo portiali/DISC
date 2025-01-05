@@ -1,17 +1,15 @@
-/* Basic reset and layout */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Wrapper for the entire profile list */
 div {
     padding: 20px;
     font-family: 'Arial', sans-serif;
 }
 
-/* Title styling */
 .title {
     font-size: 32px;
     font-weight: bold;
@@ -20,7 +18,7 @@ div {
     text-align: center;
 }
 
-/* Sorting dropdown styling */
+
 .order {
     padding: 10px;
     margin: 15px 0;
@@ -34,56 +32,45 @@ div {
     margin-right: auto;
 }
 
-/* Users grid container */
 .users-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    /* Dynamic grid */
     gap: 20px;
     margin-top: 20px;
 }
 
-/* Individual user card styling */
 .user-content {
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Subtle shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect for user cards */
 .user-content:hover {
     transform: translateY(-5px);
-    /* Slight raise effect */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* User name styling */
 .user-name {
     font-size: 22px;
     font-weight: 600;
     color: lightskyblue;
-    /* Blue color for name */
     margin-bottom: 10px;
 }
 
-/* User email styling */
 .user-email {
     font-size: 16px;
     color: #555;
     margin-bottom: 10px;
 }
 
-/* User bio styling */
 .user-bio {
     font-size: 14px;
     color: #777;
     margin-bottom: 10px;
 }
 
-/* Profile picture styling */
 .user-profilePicture img {
     width: 100%;
     height: auto;
@@ -92,7 +79,6 @@ div {
     object-fit: cover;
 }
 
-/* Loading state styling */
 .loading-container {
     display: flex;
     flex-direction: column;
@@ -123,7 +109,6 @@ div {
     }
 }
 
-/* Error message styling */
 .error-message {
     color: red;
     text-align: center;

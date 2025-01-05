@@ -25,8 +25,6 @@ function useUsers() {
     };
     return [users, isLoading, error, setUsers, setError]
 
-
-
 }
 
 export default useUsers

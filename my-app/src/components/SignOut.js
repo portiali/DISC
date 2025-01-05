@@ -10,7 +10,7 @@ function SignOut(){
     useEffect(() => {
 
         if (!token) {
-            navigate("/"); // Redirect to the login page if no token exists
+            navigate("/"); 
         }
     }, [token, navigate]);
 

@@ -5,7 +5,6 @@ import "./Login.css";
 
 function UserLogin() {
     const {token, setToken, userId, setUserId } = useAuth();
-    // const [protectedData, setProtectedData] = useState(null);
     const [error, setError] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +15,6 @@ function UserLogin() {
         console.log("Token state updated:", token);
         if (token && !hasNavigated){
             setTimeout(() => navigate("/home"), 100);
-            // console.log(token);
             setHasNavigated(true);
             navigate("/home");
         }
@@ -25,7 +23,6 @@ function UserLogin() {
     useEffect(() => {
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get("access_token");
-        // navigate("/home");
 
         if (accessToken) {
             setToken(accessToken);
@@ -33,7 +30,6 @@ function UserLogin() {
         }
         if (token && !hasNavigated) {
             setTimeout(() => navigate("/home"), 100);
-            // console.log(token);
             setHasNavigated(true);
             navigate("/home");
         }
@@ -53,19 +49,12 @@ function UserLogin() {
 
             const data = await response.json();
             if (data.error) throw new Error(data.error);
-            console.log(data);
 
             setToken(data.session.access_token);
-            console.log("checking for token: ", data.session.access_token);
-            console.log("TOKEN FROM LOGIN: ", token);
             setUserId(data.session.user.id);
-            console.log("LOGIN TOKEN AND USERID", token, userId);
-
-            console.log(data.token);
             setError("");
             if (token && !hasNavigated) {
                 setTimeout(() => navigate("/home"), 100);
-                // console.log(token);
                 setHasNavigated(true);
                 navigate("/home");
             }
@@ -91,7 +80,6 @@ function UserLogin() {
             if (data.error) throw new Error(data.error);
 
             setError("Registration successful! Please sign in.");
-            //call apis for inserting into table here!
 
         } catch (err) {
             setError(err.message);

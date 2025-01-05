@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { getAllUsers, deleteUser } from "../api/users";
-// import "./Users.css"
-import UserCard from "../components/UserCard";
+import React, { useState, useMemo } from "react";
+import { deleteUser } from "../api/users";
 import useUsers from "../hooks/useUsers";
 import NavBar from "../components/NavBar";
 import "./ProfileList.css"
@@ -9,28 +7,9 @@ import SignOut from "../components/SignOut";
 
 
 export const ProfileList = () => {
-    // const [users, setUsers] = useState([]);
-    // const [error, setError] = useState(null);
-    // const [loading, setLoading] = useState(true);
     const [users, isLoading, error, setUsers, setError] = useUsers();
     console.log(users);
     const [order, setOrder] = useState("");
-
-    // useEffect(() => {
-    //     loadUsers();
-    // }, []);
-
-    // const loadUsers = async () => {
-    //     try {
-    //         const data = await getAllUsers();
-    //         console.log(data);
-    //         setUsers(data);
-    //     } catch (err) {
-    //         setError("Failed to load users");
-    //     } finally{
-    //         setLoading(false);
-    //     }
-    // };
 
     const handleDeleteUser = async (id) => {
         try {

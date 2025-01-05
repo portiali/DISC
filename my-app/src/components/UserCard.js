@@ -23,7 +23,6 @@ function UserCard({ user, onDelete, onEdit }) {
         onEdit(user);
     };
 
-
     return (
         <div className="user-content" key={user.id}>
             <h3 className="user-name">{user.firstname || "No first name"} {user.lastname || "No last name"}</h3>

@@ -17,10 +17,7 @@ export const UserForm = () => {
     const [email, setEmail] = useState("");
     const [bio, setBio] = useState("");
     const [profilePic, setProfilePic] = useState("");
-    //const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-
-    //use useUsers!!!!
 
     useEffect(() => {
         if (userId) {
@@ -49,9 +46,10 @@ export const UserForm = () => {
             formData.append("bio", bio);
             formData.append("profile_picture", "temp pic");
             console.log("ID HERE", id);
-            if (profilePic) {
-                formData.append("profilepicture", profilePic);
-            }
+            //still working on this part!
+            // if (profilePic) {
+            //     formData.append("profilepicture", profilePic);
+            // }
             console.log('FORM DATA HERE', formData);
             for (let [key, value] of formData.entries()) {
                 console.log(`${key}:`, value);

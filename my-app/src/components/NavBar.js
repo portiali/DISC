@@ -15,8 +15,6 @@ function NavBar() {
                 <li>
                     <span className="bold-c">c</span>ampus<span className="bold-c">c</span>licks
                 </li>
-                {/* <li>
-                    campusclicks</li> */}
                 <li><i class="fa-solid fa-house"></i>
                     <Link to = "/home">home</Link></li>
                 <li><i class="fa-regular fa-square-plus"></i><Link to = "/users/upload">create</Link></li>

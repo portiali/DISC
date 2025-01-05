@@ -9,7 +9,6 @@ h1 {
    
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    /* height: 100vh; */
     width: 100%;
     gap: 50px;
 }
@@ -17,7 +16,6 @@ h1 {
 .order{
     width: 150px;
     display: block;
-    /* border: 1px solid red; */
     height: 30px;
     background-color: white;
 }

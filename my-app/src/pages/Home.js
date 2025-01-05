@@ -13,7 +13,7 @@ function Home() {
   useEffect(() => {
     
     if (!token) {
-      navigate("/"); // Redirect to the login page if no token exists
+      navigate("/"); // redirect to the login page if no token exists
     }
   }, [token, navigate]);
 
@@ -29,7 +29,6 @@ function Home() {
       <NavBar/>
       <GalleryNew/>
       <SignOut/>
-      {/* <button onClick = {handleSignOut}> Sign Out</button> */}
     </div>
   );
 }
